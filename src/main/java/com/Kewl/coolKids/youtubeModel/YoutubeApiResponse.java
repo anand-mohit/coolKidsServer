@@ -1,9 +1,6 @@
-package com.Kewl.coolKids.model.responses;
+package com.Kewl.coolKids.youtubeModel;
 
 import java.util.List;
-
-import com.Kewl.coolKids.abstracts.ResponseModel;
-import com.Kewl.coolKids.youtubeModel.Item;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -17,7 +14,10 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PlaylistRepsonse extends ResponseModel{
-	String categoryCode;
-	List<Item> playlist;
+public class YoutubeApiResponse {
+	 String kind;
+	 String etag;
+	 String nextPageToken;
+	 PageInfo pageInfo;
+	 List<Item> items;
 }

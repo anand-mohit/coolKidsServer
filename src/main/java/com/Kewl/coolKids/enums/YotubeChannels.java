@@ -8,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public enum YotubeChannels {
 	
-	CHUCHU_TV("ChuchuTv"),
+	CHUCHU_TV("UC7fk9tVVNRZAjhjps2O4Ygg"),
     KIDS_LEARNING("KidsLearning"),
     ;
     public String getValue() {

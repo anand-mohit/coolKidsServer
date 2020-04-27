@@ -18,5 +18,7 @@ public class KewlConstants {
 	public static final String FAILURE_RESPONSE_CODE = "999";
 	public static final String FAILURE_RESPONSE_MESSAGE = "NO-NO";
 	
+	
+	
 
 }
