@@ -37,7 +37,7 @@ public class KewlController {
 	@PostMapping("/getPlaylist")
 	public ResponseEntity<CoolKidResponse> getPlaylist(@RequestBody PlaylistRequest playlistRequest) {
 		List<String> categoryCode = playlistRequest.getCategoryCode();
-		List<PlaylistRepsonse> playList = categoryCode.stream().map(c->new PlaylistRepsonse(c,playlistService.getVideoMeta(c))).collect(Collectors.toList());
+		List<PlaylistRepsonse> playList = categoryCode.stream().map(c->new PlaylistRepsonse(c,playlistService.fetchVideos(c))).collect(Collectors.toList());
 		CoolKidResponse response = new CoolKidResponse(new ResponseStatus(KewlConstants.SUCCESS_RESPONSE_CODE,KewlConstants.SUCCESS_RESPONSE_MESSAGE),playList);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}

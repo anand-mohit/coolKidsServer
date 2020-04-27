@@ -9,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 public enum YotubeChannels {
 	
 	CHUCHU_TV("UC7fk9tVVNRZAjhjps2O4Ygg"),
-    KIDS_LEARNING("KidsLearning"),
+    COOL_KIDS("UCdHCmXZKmodh2i3Ut_WrnNg"),
     ;
     public String getValue() {
 		return value;

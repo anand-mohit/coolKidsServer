@@ -17,7 +17,7 @@ public class Snippet {
 	String publishedAt ;
     String channelId;
     String title;
-    String description;
+    //String description;
     String channelTitle;
     String playlistId;
     Thumbnails thumbnails;

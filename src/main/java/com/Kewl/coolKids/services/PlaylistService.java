@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Kewl.coolKids.enums.Categories;
 import com.Kewl.coolKids.enums.YotubeChannels;
 import com.Kewl.coolKids.youtubeModel.Item;
 import com.Kewl.coolKids.youtubeModel.YoutubeApiResponse;
@@ -36,10 +37,15 @@ public class PlaylistService {
 				.collect(Collectors.toList());
 
 	}
+	public List<Item> fetchVideos(String categoryCode){
+		Categories category = Categories.valueOf(categoryCode);
+		List<Item> items = getYoutubeVideoList(category.getPlaylistId());
+		return items;
 
+	}
 	private List<String> getChannelList(String categoryCode) {
 		// TODO Auto-generated method stub
-		return Arrays.asList(YotubeChannels.CHUCHU_TV.getValue());
+		return Arrays.asList(YotubeChannels.COOL_KIDS.getValue());
 	}
 	
 	
