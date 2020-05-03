@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.Kewl.coolKids.constants.YoutubeConstants;
@@ -31,6 +32,8 @@ import com.google.api.services.youtube.model.PlaylistListResponse;
 @Service
 public class YoutubeDataService {
 	
+	@Value("${youtube.apikey}")
+	private String youtubeKey;
 	
 	@Autowired
 	static RestCallService restCallService;
@@ -98,19 +101,21 @@ public class YoutubeDataService {
 	    }
 	    
 	    
-	    public static YoutubeApiResponse getPlaylistOfChannel(String channelId) {
+	    public  YoutubeApiResponse getPlaylistOfChannel(String channelId) {
 	    	String channel = "&channelId="+channelId;
-	    	
-	    	String url = YoutubeConstants.PLAYLIST_URL + channel + YoutubeConstants.MAX_RESULTS_50 + YoutubeConstants.DATA_API_KEY;
+	    	String apiKey = YoutubeConstants.DATA_API_KEY + youtubeKey;
+	    	String url = YoutubeConstants.PLAYLIST_URL + channel + YoutubeConstants.MAX_RESULTS_50 + apiKey;
 	    	return (YoutubeApiResponse) restCallService.makeGetHttpCall(url,YoutubeApiResponse.class).getBody(); 
 	    	
 	    	
 	    }
 	    
-	    private static List<Item> getVideos(String playlistId, String pageToken,List<Item> videoItems){
+	    private  List<Item> getVideos(String playlistId, String pageToken,List<Item> videoItems){
 	    	String playList = "&playlistId="+playlistId;
-	    	String url = YoutubeConstants.PLAYLIST_VIDEOLIST_URL + playList + YoutubeConstants.MAX_RESULTS_50 + YoutubeConstants.DATA_API_KEY;
+	    	String apiKey = YoutubeConstants.DATA_API_KEY + youtubeKey;
+	    	String url = YoutubeConstants.PLAYLIST_VIDEOLIST_URL + playList + YoutubeConstants.MAX_RESULTS_50 + apiKey ;
 	    	url = pageToken != null ? url + YoutubeConstants.PAGE_TOKEN+pageToken :url;
+	    	System.out.println(url);
 	    	YoutubeApiResponse res = (YoutubeApiResponse) restCallService.makeGetHttpCall(url,YoutubeApiResponse.class).getBody(); 
 	    	videoItems.addAll(res.getItems());
 	    	if(res.getNextPageToken() != null) {	
@@ -119,7 +124,7 @@ public class YoutubeDataService {
 			return videoItems;
 	    	
 	    }
-	    public static List<Item> getVideosOfPlaylist(String playlistID) {
+	    public  List<Item> getVideosOfPlaylist(String playlistID) {
 	    	return getVideos(playlistID,null,new ArrayList<> ());
 	    }
 	

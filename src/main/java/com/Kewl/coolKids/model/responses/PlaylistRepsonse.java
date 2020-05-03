@@ -19,5 +19,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PlaylistRepsonse extends ResponseModel{
 	String categoryCode;
+	String categoryName;
 	List<Item> playlist;
 }

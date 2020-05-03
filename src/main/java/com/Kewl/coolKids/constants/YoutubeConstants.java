@@ -2,7 +2,7 @@ package com.Kewl.coolKids.constants;
 
 public class YoutubeConstants {
 	
-	public static final String DATA_API_KEY	="&key=AIzaSyDoN3QEMEHEY5QA4_0Lq8fuxLzMQ6-bry8";
+	public static final String DATA_API_KEY	="&key=";
 	public static final String BASE_URL = "https://www.googleapis.com/youtube/v3/";
 	public static final String PART = "part=snippet,contentDetails,status";
 	public static final String PLAYLIST_URL = BASE_URL + "playlists?"+PART;
